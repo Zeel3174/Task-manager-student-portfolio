@@ -1,0 +1,1 @@
+import{NavLink}from'react-router-dom';export default function NavBar(){return <nav><strong>ITUE301 Task Manager</strong><div>{['/','/tasks','/projects','/contact','/login','/register'].map(p=><NavLink key={p} to={p}>{p==='/'?'Home':p.slice(1)}</NavLink>)}</div></nav>}

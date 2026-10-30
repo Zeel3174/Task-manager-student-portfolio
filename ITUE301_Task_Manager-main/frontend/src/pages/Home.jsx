@@ -1,0 +1,2 @@
+import Header from '../components/Header';import About from '../components/About';import Skills from '../components/Skills';import Footer from '../components/Footer';
+export default function Home({name}){return <><Header name={name}/><About/><Skills skillList={['React Components','React Router','REST APIs','Express.js','MongoDB/Mongoose','JWT Authentication','Caching','Event-Driven Architecture']}/><Footer/></>}
