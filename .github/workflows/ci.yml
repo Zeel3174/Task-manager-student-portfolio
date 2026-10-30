@@ -1,0 +1,37 @@
+name: Task Manager CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Install, test and build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      - name: Install backend dependencies
+        run: npm --prefix backend install
+
+      - name: Run backend automated tests
+        run: npm --prefix backend test
+
+      - name: Install frontend dependencies
+        run: npm --prefix frontend install
+
+      - name: Build React frontend
+        run: npm --prefix frontend run build
